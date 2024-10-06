@@ -1,0 +1,12 @@
+.form-group {
+    position: relative;
+}
+.form-group i {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #495057;
+}
+.form-group input {
+    padding-left: 35px;
+}

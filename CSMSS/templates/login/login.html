@@ -1,8 +1,35 @@
-{%load crispy_forms_tags %}
+{% extends "boot.html" %}
+{% load crispy_forms_tags %}
 
-<div>
-    <form>
-        {{ form | crispy}}
-    </form>
-    <input type="submit" value="Login">
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <h2 class="text-center mb-4">Login form</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <i class="bx bx-user"></i>
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                <i class="bx bx-lock-alt"></i>
+                {{ form.password }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
